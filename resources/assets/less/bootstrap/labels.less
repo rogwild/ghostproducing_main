@@ -1,0 +1,100 @@
+//
+// Labels
+// --------------------------------------------------
+
+.label {
+  position:absolute; //new
+  display: inline;
+  padding: 5px 7px 5px 5px/*.2em .6em .3em*/;
+  font-size: 120%;
+  font-weight: bold;
+  line-height: 1;
+  color: @label-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: none;
+    opacity:0.8;
+
+  // Add hover effects, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @label-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Empty labels collapse automatically (not available in IE8)
+  &:empty {
+    display: none;
+  }
+
+  // Quick fix for labels in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
+  }
+    &.price {
+        top:15px;
+        left:0px;
+    }
+    &.play {
+        bottom:0px;
+        right:0px;
+        z-index: 1000;
+        .glyphicon {
+            font-size: 25px;
+            height: 25px;
+        }
+    }
+    &.like {
+        right: 18px;
+        bottom: 12px;
+        font-size: 25px;
+        a{
+            &.active {
+                color: @brand-danger;
+                &:hover {
+                   color: @gray-light; 
+                }
+            }
+           &:hover {
+               color: @brand-danger; 
+            }
+        }
+        
+    }
+}
+a:hover>.label {
+    opacity: 1;
+}
+
+// Colors
+// Contextual variations (linked labels get darker on :hover)
+
+.label-default {
+    opacity: 0.9;
+  .label-variant(@label-default-bg);
+}
+
+.label-primary {
+  .label-variant(@label-primary-bg);
+}
+
+.label-success {
+  .label-variant(@label-success-bg);
+}
+
+.label-info {
+  .label-variant(@gray-light);
+}
+
+.label-warning {
+  .label-variant(@label-warning-bg);
+}
+
+.label-danger {
+  .label-variant(@label-danger-bg);
+}
