@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/config/auth.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/app/Track.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/app/Http/Controllers/ProducerController.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/resources/views/pages/producer.blade.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/database/migrations/2014_10_12_000000_create_users_table.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/app/Http/routes.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/app/User.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/resources/views/pages/main.blade.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/config/filesystems.php</file>
-            <file>file:/C:/open%20server/openserver/domains/localhost/duck_shop/OpenServer/domains/ghostproducing/app/Http/Controllers/MainController.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

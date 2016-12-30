@@ -43,7 +43,8 @@
                 <button type="submit" class="btn btn-default">Найти</button>
               </form>
               <ul class="nav navbar-nav navbar-right">
-                <li><a type="button" data-toggle="modal" data-target=".login-modal-sm" href="#">войти</a></li>
+                <li><a type="button" href="{{ url('/auth/login') }}">войти</a></li>
+                <li><a type="button" href="{{ url('/auth/register') }}">зарегистрироваться</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
