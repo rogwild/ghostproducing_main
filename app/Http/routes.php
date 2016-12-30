@@ -12,7 +12,11 @@
 */
 
 Route::get('/', 'MainController@index');
-Route::get('/home', 'MainController@index');
+Route::get('/home', 'MainController@home');
+Route::get('/profile/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'ProfileController@show'
+]);
 Route::get('/producers/{producer}', 'ProducerController@index');
 
 Route::controllers([
@@ -27,3 +31,11 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Маршруты регистрации...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+// Маршруты запроса ссылки для сброса пароля...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Маршруты сброса пароля...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');

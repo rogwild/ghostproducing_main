@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
       <meta charset="utf-8">
@@ -18,14 +18,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-              <a class="navbar-brand" href="main.html">Ghostinger</a>
+              <a class="navbar-brand" href="{{ url('/') }}">Ghostinger</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">жанры <b class="caret"></b></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">genres <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li><a href="house.html">house</a></li>
                         <li><a href="trance.html">trance</a></li>
@@ -45,6 +45,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a type="button" href="{{ url('/auth/login') }}">войти</a></li>
                 <li><a type="button" href="{{ url('/auth/register') }}">зарегистрироваться</a></li>
+                <li><a type="button" href="{{ url('/auth/logout') }}">выйти</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->

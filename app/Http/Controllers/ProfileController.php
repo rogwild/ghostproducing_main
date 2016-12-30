@@ -2,13 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
-use App\Track;
-use App\Producer;
-use Illuminate\Http\Request;
-use Auth;
 
-class MainController extends Controller {
+use Illuminate\Http\Request;
+
+class ProfileController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -17,19 +14,7 @@ class MainController extends Controller {
 	 */
 	public function index()
 	{
-                //$tracks = Track::with(Producer)->get();
-                $tracks = Track::all();
-                //$producer = Producer::with(tracks)->get();
-		return view('pages.main', compact('tracks'));
-	}
-        
-        public function home()
-	{
-                //$tracks = Track::with(Producer)->get();
-                $tracks = Track::all();
-                echo Auth::user()->name;
-                //$producer = Producer::with(tracks)->get();
-		return view('pages.main', compact('tracks'));
+		//
 	}
 
 	/**
@@ -60,7 +45,7 @@ class MainController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+            return view('pages.profile');
 	}
 
 	/**

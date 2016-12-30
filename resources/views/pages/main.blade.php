@@ -1,4 +1,4 @@
-    @section('title', 'Main')
+    @section('title', 'Главная')
     
     @extends('layout')
 
