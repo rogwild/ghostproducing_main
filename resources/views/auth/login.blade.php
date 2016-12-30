@@ -42,6 +42,7 @@
                 <button type="submit" class="btn btn-default btn-md pull-right">Войти</button>
 
                 <a class="btn btn-link" href="{{ url('/password/email') }}">Забыли пароль?</a>
+                <a class="btn btn-link" href="{{ url('auth/register') }}">Регистрация</a>
             </div>
     </form>
 @endsection                                        

@@ -2,7 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Auth;
+use App\User;
+use App\Track;
+use DB;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller {
@@ -12,9 +15,18 @@ class ProfileController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($id)
 	{
-		//
+                Auth::user()->id;
+                $tracks = Track::all();
+                return view('pages.profile.profile_main', compact('tracks'));
+	}
+        
+        public function purchases($id)
+	{
+                Auth::user()->id;
+                $tracks = Track::all();
+                return view('pages.profile.profile_purchases', compact('tracks'));
 	}
 
 	/**
@@ -45,7 +57,8 @@ class ProfileController extends Controller {
 	 */
 	public function show($id)
 	{
-            return view('pages.profile');
+            //
+            
 	}
 
 	/**

@@ -27,7 +27,7 @@ class MainController extends Controller {
 	{
                 //$tracks = Track::with(Producer)->get();
                 $tracks = Track::all();
-                echo Auth::user()->name;
+                Auth::user()->name;
                 //$producer = Producer::with(tracks)->get();
 		return view('pages.main', compact('tracks'));
 	}

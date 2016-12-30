@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">genres <b class="caret"></b></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">жанры <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li><a href="house.html">house</a></li>
                         <li><a href="trance.html">trance</a></li>
@@ -43,9 +43,7 @@
                 <button type="submit" class="btn btn-default">Найти</button>
               </form>
               <ul class="nav navbar-nav navbar-right">
-                <li><a type="button" href="{{ url('/auth/login') }}">войти</a></li>
-                <li><a type="button" href="{{ url('/auth/register') }}">зарегистрироваться</a></li>
-                <li><a type="button" href="{{ url('/auth/logout') }}">выйти</a></li>
+                <li><a type="button" href="{{ url('/profile/main/{id}') }}">Профиль</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
@@ -82,7 +80,7 @@
             @yield('content')
     </body> 
     
-    <script src="/jquery/dist/jquery.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery.js"></script>
+    <script src="/dist/bootstrap.js"></script>
 </html>
 

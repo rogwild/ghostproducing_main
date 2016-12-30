@@ -13,10 +13,16 @@
 
 Route::get('/', 'MainController@index');
 Route::get('/home', 'MainController@home');
-Route::get('/profile/{id}', [
+Route::get('/profile/main/{id}', [
     'middleware' => 'auth',
-    'uses' => 'ProfileController@show'
+    'uses' => 'ProfileController@index'
 ]);
+
+Route::get('/profile/purchases/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'ProfileController@purchases'
+]);
+
 Route::get('/producers/{producer}', 'ProducerController@index');
 
 Route::controllers([
