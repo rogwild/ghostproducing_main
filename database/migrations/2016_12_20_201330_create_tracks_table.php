@@ -16,6 +16,7 @@ class CreateTracksTable extends Migration {
 		{
 			$table->increments('id');
                         $table->integer('producer_id')->unsigned()->index();
+                        $table->integer('buyer_id');
                         $table->string('name');
                         $table->string('genre');
                         $table->integer('price');

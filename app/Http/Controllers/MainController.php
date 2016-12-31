@@ -18,7 +18,13 @@ class MainController extends Controller {
 	public function index()
 	{
                 //$tracks = Track::with(Producer)->get();
-                $tracks = Track::all();
+                $tracks = Track::paginate(5);
+                if (Auth::check()) {
+                    Auth::user()->name;
+                }
+                else {
+                    return view('pages.main', compact('tracks'));
+                }
                 //$producer = Producer::with(tracks)->get();
 		return view('pages.main', compact('tracks'));
 	}

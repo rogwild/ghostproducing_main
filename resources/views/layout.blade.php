@@ -42,9 +42,33 @@
                 </div>
                 <button type="submit" class="btn btn-default">Найти</button>
               </form>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a type="button" href="{{ url('/profile/main/{id}') }}">Профиль</a></li>
-              </ul>
+              
+                
+                
+                
+                <?php if (Auth::check()): 
+                // Проверяем, пусты ли переменные логина и id пользователя Если пусты, то мы не выводим ссылку?>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle uppercase" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{{ '/profile/main/{id}' }}">профиль</a></li>
+                        <li><a href="">заказы<span class="badge">2</span></a></li>
+                        <li><a href="">сообщения</a></li>
+                        <li><a href="{{ '/auth/logout' }}">выйти</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+                <?php else: 
+                // Если не пусты, то мы выводим ссылку ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a type="button" href="{{ url('/profile/main/{id}') }}"> Войти </a></li>
+                </ul>
+                <?php endif ?>
+              
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
