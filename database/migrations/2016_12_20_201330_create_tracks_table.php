@@ -15,8 +15,8 @@ class CreateTracksTable extends Migration {
 		Schema::create('tracks', function(Blueprint $table)
 		{
 			$table->increments('id');
-                        $table->integer('producer_id')->unsigned()->index();
-                        $table->integer('buyer_id');
+                        $table->integer('user_id')->unsigned()->index();
+                        $table->integer('buyer_id')->unsigned()->index();
                         $table->string('name');
                         $table->string('genre');
                         $table->integer('price');
@@ -24,7 +24,9 @@ class CreateTracksTable extends Migration {
                         $table->string('sequencer');
                         $table->string('key');
                         $table->string('cover');
-                        $table->string('file');
+                        $table->varchar('coverfilename');
+                        $table->string('trackfile');
+                        $table->string('megalink');
 			$table->timestamps();
 		});
 	}

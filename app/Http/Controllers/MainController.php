@@ -1,12 +1,16 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Track;
+use App\User;
 use App\Producer;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class MainController extends Controller {
 
@@ -19,6 +23,8 @@ class MainController extends Controller {
 	{
                 //$tracks = Track::with(Producer)->get();
                 $tracks = Track::paginate(5);
+                //$url = Storage::get('public/cover.jpg');
+                //echo '$url';
                 if (Auth::check()) {
                     Auth::user()->name;
                 }
@@ -36,6 +42,18 @@ class MainController extends Controller {
                 Auth::user()->name;
                 //$producer = Producer::with(tracks)->get();
 		return view('pages.main', compact('tracks'));
+	}
+        
+        public function getCover($coverfilename)
+	{
+            $cover = Storage::disk('local')->get($coverfilename);
+            return new Response($cover,200);
+	}
+        
+        public function getTrack($trackname)
+	{
+            $trackfile = Storage::disk('local')->get($trackname);
+            return new Response($trackfile,200);
 	}
 
 	/**

@@ -12,18 +12,51 @@
 */
 
 Route::get('/', 'MainController@index');
+Route::get('/tracks', 'TrackController@index');
 Route::get('/home', 'MainController@home');
-Route::get('/profile/main/{id}', [
+Route::get('/profile/main/{user}', [
     'middleware' => 'auth',
     'uses' => 'ProfileController@index'
 ]);
 
-Route::get('/profile/purchases/{id}', [
+Route::get('/coverimage/{coverfilename}', [
+    'uses' => 'MainController@getCover',
+    'as' => 'cover.image',
+]);
+
+Route::get('/audiotrack/{trackfilename}', [
+    'uses' => 'MainController@getTrack',
+    'as' => 'audio.track',
+]);
+
+Route::get('/profile/purchases/{user}', [
     'middleware' => 'auth',
     'uses' => 'ProfileController@purchases'
 ]);
 
-Route::get('/producers/{producer}', 'ProducerController@index');
+Route::get('/profile/add_track/{user}', [
+    'middleware' => 'auth',
+    'uses' => 'ProfileController@addTrack'
+]);
+
+Route::post('/profile/{user}/add_track', [
+    'middleware' => 'auth',
+    'uses' => 'TrackController@create'
+]);
+
+Route::get('/profile/{track}/delete', [
+    'middleware' => 'auth',
+    'uses' => 'TrackController@destroy'
+]);
+
+Route::group(['middleware' => ['owner']], function() {
+        Route::get('/profile/{track}/delete', [
+        'middleware' => 'auth',
+        'uses' => 'TrackController@destroy'
+    ]);
+});
+
+Route::get('/producers/{user}', 'ProducerController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

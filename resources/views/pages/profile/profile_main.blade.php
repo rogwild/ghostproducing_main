@@ -15,7 +15,7 @@
                           <li role="presentation"><a href="{{ url('/profile/purchases/{id}') }}">покупки</a></li>
                           <li role="presentation"><a href="profile_orders.html">заказы<span class="badge">2</span></a></li>
                           <li role="presentation"><a href="profile_messages.html">сообщения</a></li>
-                          <li role="presentation"><a href="profile_add_track.html">добавить трек</a></li>
+                          <li role="presentation"><a href="{{ url('/profile/add_track/{id}') }}">добавить</a></li>
                           <li role="presentation"><a href="profile_settings.html">настройки</a></li>
                         </ul>
                     </div>
@@ -26,7 +26,7 @@
                     <div class="row">
                        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 p-0">
                         <h2 class="black">
-                            прослушанные работы
+                            мои работы
                         </h2>
                        </div>
                        <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4 p-0">
@@ -101,43 +101,68 @@
                                           <span  class="glyphicon glyphicon-chevron-down ml-3"></span>
                                       </th>
                                       <th></th>
+                                      <th></th>
                                     </tr>
                                   </thead>
                                 <tbody class="middle">
                                    @foreach ($tracks as $track)
-                                        <tr>
-                                            <td>
-                                                 <h5 class="text-center">
-                                                    <a href="">
-                                                        <span class="glyphicon glyphicon-play-circle"></span>
-                                                    </a>
-                                                 </h5>
-                                             </td>
-                                             <td class="p-0 hidden-xs">
-                                                 <img src="img/14337834.jpg" alt="..." class="img-responsive img-74">
-                                             </td>
-
-                                             <td >
-                                                 <h4 class="m-0">{{ $track->name }}</h4>
-                                                 <h5><a href="/producers/{{$track->producer_id}}">{{ $track->producer->producer_name }}</a></h5>
-                                             </td>
-                                             <td class="hidden-xs">
-                                                 <h5>{{ $track->created_at }}</h5>
-                                             </td>
-                                             <td >
-                                                 <h5 class="m-0 dark"><a href="#">{{ $track->genre }}</a></h5>
-                                             </td>
-                                             <td >
-                                                 <h5 class="m-0">{{ $track->price }}</h5>
-                                             </td>
-                                             <td >
-                                                 <h5 class="m-0">
-                                                    <a href="" data-toggle="tooltip" data-placement="top" title="Купить">
-                                                        <span class="glyphicon glyphicon-shopping-cart cart"></span>
-                                                    </a>
-                                                 </h5>
-                                             </td>
-                                           </tr>
+                                    <tr>
+                                        <td>
+                                            <h5 class="text-center">
+                                                <a href="javascript:void(0)" onclick="aud_play_pause(this)">
+                                                    <i class="glyphicon glyphicon-play-circle control icon-play"></i>
+                                                    <audio class="xnine-player" src="{{ route('audio.track',['trackname' => $track->name.'.mp3']) }}" preload="auto"></audio>
+                                                </a>
+                                            </h5>
+                                        </td>
+                                        <td class="p-0 hidden-xs">
+                                            <img src="{{ route('cover.image',['coverfilename' => $track->name.'.jpg']) }}" alt="..." class="img-responsive img-74">
+                                        </td>
+                                      
+                                        <td >
+                                            <h4 class="m-0">{{ $track->name }}</h4>
+                                            
+                                        </td>
+                                      <td>
+                                        <h5>
+                                            <a href="/producers/{{$track->user_id}}">
+                                                {{ $track->user->name }}
+                                            </a>
+                                        </h5>
+                                      </td>
+                                      <td>
+                                          <h5 class="m-0 dark"><a href="/{{ $track->genre }}">{{ $track->genre }}</a></h5>
+                                      </td>
+                                      <td>
+                                         <h5 class="m-0 dark"><a href="/{{ $track->sequencer }}">{{ $track->sequencer }}</a></h5>
+                                      </td>
+                                      <td class="tx-tr-n">
+                                          <h5>{{ $track->key }}</h5>
+                                     </td>
+                                     <td class="tx-tr-n">
+                                          <h5>{{ $track->bpm }} BPM</h5>
+                                     </td>
+                                      <td class="hidden-xs">
+                                          <h5>{{ $track->created_at->format('Y-m-d') }}</h5>
+                                      </td>
+                                      <td >
+                                          <h5 class="m-0">{{ $track->price }}</h5>
+                                      </td>
+                                      <td >
+                                          <h5 class="m-0">
+                                             <a href="">
+                                                 <span class="glyphicon glyphicon-shopping-cart cart"></span>
+                                             </a>
+                                          </h5>
+                                      </td>
+                                      <td >
+                                          <h5 class="m-0">
+                                             <a href="/profile/{{$track->id}}/delete">
+                                                 <span class="glyphicon glyphicon-shopping-cart cart"></span>
+                                             </a>
+                                          </h5>
+                                      </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                               </table>

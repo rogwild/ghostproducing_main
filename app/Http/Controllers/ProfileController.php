@@ -18,7 +18,7 @@ class ProfileController extends Controller {
 	public function index($id)
 	{
                 Auth::user()->id;
-                $tracks = Track::all();
+                $tracks = Track::where('user_id', '=', Auth::user()->id)->get();
                 return view('pages.profile.profile_main', compact('tracks'));
 	}
         
@@ -27,6 +27,12 @@ class ProfileController extends Controller {
                 Auth::user()->id;
                 $tracks = Track::all();
                 return view('pages.profile.profile_purchases', compact('tracks'));
+	}
+        
+        public function addTrack($id)
+	{
+                Auth::user()->id;
+                return view('pages.profile.profile_add_track');
 	}
 
 	/**

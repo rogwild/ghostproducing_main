@@ -32,7 +32,7 @@
                         <li><a href="techno.html">techno</a></li>
                       </ul>
                     </li>
-                    <li><a href="tracks.html">треки</a></li>
+                    <li><a href="/tracks">треки</a></li>
                     <li><a href="producers.html">продюсеры</a></li>
                     <li><a href="ads.html">объявления</a></li>
                 </ul>
@@ -45,12 +45,10 @@
               
                 
                 
-                
+            <ul class="nav navbar-nav navbar-right">
                 <?php if (Auth::check()): 
                 // Проверяем, пусты ли переменные логина и id пользователя Если пусты, то мы не выводим ссылку?>
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle uppercase" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                       <ul class="dropdown-menu">
@@ -60,15 +58,12 @@
                         <li><a href="{{ '/auth/logout' }}">выйти</a></li>
                       </ul>
                     </li>
-                  </ul>
                 </div><!-- /.navbar-collapse -->
                 <?php else: 
                 // Если не пусты, то мы выводим ссылку ?>
-                <ul class="nav navbar-nav navbar-right">
                     <li><a type="button" href="{{ url('/profile/main/{id}') }}"> Войти </a></li>
-                </ul>
                 <?php endif ?>
-              
+              </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
@@ -105,6 +100,19 @@
     </body> 
     
     <script src="/jquery/jquery.js"></script>
+    <script>
+        function aud_play_pause(object) {
+            var myAudio = object.querySelector(".xnine-player");
+            var myIcon = object.querySelector(".control");
+            if (myAudio.paused) {
+                myIcon.className = "glyphicon glyphicon-play-circle control icon-pause";
+                myAudio.play();
+            } else {
+                myIcon.className = "glyphicon glyphicon-play-circle control icon-play";
+                myAudio.pause();
+            }
+        }
+    </script>
     <script src="/dist/bootstrap.js"></script>
 </html>
 

@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8">
                         <h2 class="black">
-                            {{ $producer->producer_name }}
+                            {{ $user->name }}
                         </h2>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
@@ -375,7 +375,7 @@
                     доступные треки
              </h2>
              <div class="row">
-                 @foreach ($producer->tracks as $track)
+                 @foreach ($user->tracks as $track)
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                         <div class="thumbnail p-0 pos-rel">
                           <a href="#"><img class="program-icon" src="img/ableton_live__flat__icns_ios_7_for_osx_dock_by_gianmarcozappala-d6pl22g.png" alt="..." data-toggle="tooltip" data-placement="top" title="Ableton Live"></a>
@@ -393,7 +393,7 @@
                                 {{ $track->name }}
                             </h2>
                             <h4>
-                                <a href="/producers/{producer}">{{ $producer->producer_name }}</a>
+                                <a href="/producers/{producer}">{{ $user->name }}</a>
                             </h4>
                             <h5>
                                 <a href="#">{{ $track->genre }}</a>

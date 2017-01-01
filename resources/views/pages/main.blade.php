@@ -112,24 +112,27 @@
                                         <tr>
                                             <td>
                                                  <h5 class="text-center">
-                                                    <a href="">
-                                                        <span class="glyphicon glyphicon-play-circle"></span>
+                                                    <a href="javascript:void(0)" onclick="aud_play_pause(this)">
+                                                        <i class="glyphicon glyphicon-play-circle control icon-play"></i>
+                                                        <audio class="xnine-player" src="{{ route('audio.track',['trackname' => $track->name.'.mp3']) }}" preload="auto"></audio>
                                                     </a>
                                                  </h5>
                                              </td>
                                              <td class="p-0 hidden-xs">
-                                                 <img src="img/14337834.jpg" alt="..." class="img-responsive img-74">
+                                                 <img src="{{ route('cover.image',['coverfilename' => $track->name.'.jpg']) }}" alt="..." class="img-responsive img-74">
                                              </td>
 
                                              <td >
                                                  <h4 class="m-0">{{ $track->name }}</h4>
-                                                 <h5><a href="/producers/{{$track->producer_id}}">{{ $track->producer->producer_name }}</a></h5>
+                                                 <h5><a href="/producers/{{$track->user_id}}">
+                                                         {{ $track->user->name }}
+                                                     </a></h5>
                                              </td>
                                              <td class="hidden-xs">
-                                                 <h5>{{ $track->created_at }}</h5>
+                                                 <h5>{{ $track->created_at->format('Y-m-d') }}</h5>
                                              </td>
                                              <td >
-                                                 <h5 class="m-0 dark"><a href="#">{{ $track->genre }}</a></h5>
+                                                 <h5 class="m-0 dark"><a href="/{{ $track->genre }}">{{ $track->genre }}</a></h5>
                                              </td>
                                              <td >
                                                  <h5 class="m-0">{{ $track->price }}</h5>
@@ -169,64 +172,41 @@
             </div>
         </div>
          <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                <div class="thumbnail p-0 pos-rel">
-                  <a href="#"><img class="program-icon" src="img/ableton_live__flat__icns_ios_7_for_osx_dock_by_gianmarcozappala-d6pl22g.png" alt="..." data-toggle="tooltip" data-placement="top" title="Ableton Live"></a>
-                  <img class="img-responsive  img-100per" src="img/14499424.jpg" alt="...">
-                  <a href="" data-toggle="tooltip" data-placement="top" title="Купить">
-                      <span class="label label-info price">25000 р</span>
-                  </a>
-                  <span class="label label-warning play">
-                         <a href="#">
-                             <span class="glyphicon glyphicon-play-circle"></span>
-                         </a>
-                  </span>
-                  <div class="caption pos-rel">
-                    <h2 class="m-0">
-                        belong
-                    </h2>
-                    <h4>
-                        <a href="producer.html">Axwell</a>
-                    </h4>
-                    <h5>
-                        <a href="#">twerk</a>
-                        138bpm
-                    </h5>
-                    <h6>
-                        07.11.2016
-                    </h6>
-                  </div>
+            @foreach ($tracks as $track)
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                    <div class="thumbnail p-0 pos-rel">
+                      <!-- <a href="#"><img class="program-icon" src="img/ableton_live__flat__icns_ios_7_for_osx_dock_by_gianmarcozappala-d6pl22g.png" alt="..." data-toggle="tooltip" data-placement="top" title="Ableton Live"></a> -->
+                      <img class="img-responsive  img-100per" src="{{ route('cover.image',['coverfilename' => $track->name.'.jpg']) }}" alt="...">
+                      <a href="" data-toggle="tooltip" data-placement="top" title="Купить">
+                          <span class="label label-info price">{{ $track->price }}</span>
+                      </a>
+                      <span class="label label-warning play">
+                             <a href="javascript:void(0)" onclick="aud_play_pause(this)">
+                                <i class="glyphicon glyphicon-play-circle control icon-play"></i>
+                                <audio class="xnine-player" src="{{ route('audio.track',['trackname' => $track->name.'.mp3']) }}" preload="auto"></audio>
+                            </a>
+                      </span>
+                      <div class="caption pos-rel">
+                        <h2 class="m-0">
+                            {{ $track->name }}
+                        </h2>
+                        <h4>
+                            <a href="/producers/{{$track->user_id}}">{{ $track->user->name }}</a>
+                        </h4>
+                        <h5>
+                            <a href="/{{ $track->genre }}">{{ $track->genre }}</a>
+                            {{ $track->bpm }} BPM
+                        </h5>
+                        <h6>
+                            {{ $track->created_at->format('Y-m-d') }}
+                        </h6>
+                        <h6>
+                            {{ $track->sequencer }}
+                        </h6>
+                      </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                <div class="thumbnail p-0 pos-rel">
-                 <a href="#"><img class="program-icon" src="img/FL_Studio_11_just_logo.png" alt="..." data-toggle="tooltip" data-placement="top" title="Fruity Loops"></a>
-                  <img class="img-responsive img-100per" src="img/14508287.jpg" alt="...">
-                  <a href="" data-toggle="tooltip" data-placement="top" title="Купить">
-                      <span class="label label-info price">15000 р</span>
-                  </a>
-                  <span class="label label-warning play">
-                         <a href="#">
-                             <span class="glyphicon glyphicon-play-circle"></span>
-                         </a>
-                  </span>
-                  <div class="caption pos-rel">
-                    <h2 class="m-0">
-                        Bracker
-                    </h2>
-                    <h4>
-                        Quintino
-                    </h4>
-                    <h5>
-                        <a href="house.html">house</a>
-                        128bpm
-                    </h5>
-                    <h6>
-                        03.11.2016
-                    </h6>
-                  </div>
-                </div>
-            </div>
+            @endforeach
          </div>
      </div>
      <div class="container-fluid">
@@ -261,9 +241,9 @@
                                        </a>
                                       </td>
                                       <td style="vertical-align:middle;">
-                                                 <h5 class="m-0 text-right">138 bpm</h5>
-                                                 <h5 class="m-0 text-right">Cm</h5>
-                                                 <h5 class="m-0 text-right">5.00-6.00 минут</h5>
+                                            <h5 class="m-0 text-right">138 bpm</h5>
+                                            <h5 class="m-0 text-right">Cm</h5>
+                                            <h5 class="m-0 text-right">5.00-6.00 минут</h5>
                                       </td>
                                     </tr>
                                 </tbody>

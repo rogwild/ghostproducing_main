@@ -32,7 +32,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
         
         public function Orders() {
-            return $this->hasMany('App\Order');
+            return $this->hasMany(Order::class);
         }
+        
+        public function tracks() {
+            return $this->hasMany(Track::class);
+        }
+        
+        /*public function addTrack(Track $track) {
+            return $this->tracks()->save($track);
+        }*/
 
 }

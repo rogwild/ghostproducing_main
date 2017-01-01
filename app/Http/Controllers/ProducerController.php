@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Producer;
+use App\Track;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProducerController extends Controller {
@@ -15,9 +17,9 @@ class ProducerController extends Controller {
 	 */
 	public function index($id)
 	{
-                $producer = Producer::find($id);
+                $user = User::find($id);
                 
-		return view('pages.producer', compact('producer'));
+		return view('pages.producer', compact('user'));
 	}
 
 	/**
