@@ -40,5 +40,18 @@
     </header>
         @yield('content')
     <script src="/jquery/jquery.js"></script>
+    <script>
+        function aud_play_pause(object) {
+            var myAudio = object.querySelector(".xnine-player");
+            var myIcon = object.querySelector(".control");
+            if (myAudio.paused) {
+                myIcon.className = "glyphicon glyphicon-play-circle control icon-pause";
+                myAudio.play();
+            } else {
+                myIcon.className = "glyphicon glyphicon-play-circle control icon-play";
+                myAudio.pause();
+            }
+        }
+    </script>
     <script src="/dist/bootstrap.js"></script>
 </html>

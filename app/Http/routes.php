@@ -49,11 +49,29 @@ Route::get('/profile/{track}/delete', [
     'uses' => 'TrackController@destroy'
 ]);
 
+Route::get('/profile/{track}/edit', [
+    'middleware' => 'auth',
+    'uses' => 'TrackController@edit'
+]);
+
+Route::post('/profile/{track}/edit', [
+    'middleware' => 'auth',
+    'uses' => 'TrackController@update'
+]);
+
 Route::group(['middleware' => ['owner']], function() {
         Route::get('/profile/{track}/delete', [
         'middleware' => 'auth',
         'uses' => 'TrackController@destroy'
     ]);
+        Route::post('/profile/{track}/edit', [
+        'middleware' => 'auth',
+        'uses' => 'TrackController@update'
+    ]);
+        Route::get('/profile/{track}/edit', [
+        'middleware' => 'auth',
+        'uses' => 'TrackController@edit'
+    ]);    
 });
 
 Route::get('/producers/{user}', 'ProducerController@index');

@@ -150,15 +150,15 @@
                                       </td>
                                       <td >
                                           <h5 class="m-0">
-                                             <a href="">
-                                                 <span class="glyphicon glyphicon-shopping-cart cart"></span>
+                                             <a href="/profile/{{$track->id}}/edit">
+                                                 <span class="glyphicon glyphicon-pencil cart"></span>
                                              </a>
                                           </h5>
                                       </td>
                                       <td >
                                           <h5 class="m-0">
                                              <a href="/profile/{{$track->id}}/delete">
-                                                 <span class="glyphicon glyphicon-shopping-cart cart"></span>
+                                                 <span class="glyphicon glyphicon-remove cart"></span>
                                              </a>
                                           </h5>
                                       </td>

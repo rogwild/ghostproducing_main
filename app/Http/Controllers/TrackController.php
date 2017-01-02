@@ -21,17 +21,14 @@ class TrackController extends Controller {
 	 */
 	public function index()
 	{
-		$tracks = Track::paginate(30);
-                //$url = Storage::get('public/cover.jpg');
-                //echo '$url';
+            $tracks = Track::paginate(30);
                 if (Auth::check()) {
                     Auth::user()->name;
                 }
                 else {
                     return view('pages.tracks', compact('tracks'));
                 }
-                //$producer = Producer::with(tracks)->get();
-		return view('pages.tracks', compact('tracks'));
+            return view('pages.tracks', compact('tracks'));
 	}
 
 	/**
@@ -41,41 +38,24 @@ class TrackController extends Controller {
 	 */
 	public function create(Request $request, Track $track, User $user)
 	{
-            //$user = Auth::user();
-            $track = new Track($request->all());
-            $track -> coverfilename = $request['name'];
-            $track -> trackfile = $request['name'];
-            $track->user_id = Auth::id();
-            $cover = $request->file('cover');
-            $coverfilename = $request['name'].'.jpg';
-            if ($cover) {
-                Storage::disk('local')->put($coverfilename, File::get($cover));
+            if ($user->user_id = Auth::user()->id)
+            {
+                $track = new Track($request->all());
+                $track -> coverfilename = $request['name'];
+                $track -> trackfile = $request['name'];
+                $track->user_id = Auth::id();
+                $cover = $request->file('cover');
+                $coverfilename = $request['name'].'.jpg';
+                    if ($cover) {
+                        Storage::disk('local')->put('covers/'.$coverfilename, File::get($cover));
+                    }
+                    $trackfile = $request->file('track');
+                    $trackname = $request['name'].'.mp3';
+                    if ($trackfile) {
+                        Storage::disk('local')->put('tracks/'.$trackname, File::get($trackfile));
+                    }
+                $track->save();
             }
-            $trackfile = $request->file('track');
-            $trackname = $request['name'].'.mp3';
-            if ($trackfile) {
-                Storage::disk('local')->put($trackname, File::get($trackfile));
-            }
-            //$path = $request->file('cover')->storeAs(
-            //    'covers', $request->user()->id
-            //);
-            //$cover = Input::file('cover')->getClientOriginalName();
-            //Storage::put('cover.JPG', $track);
-            //$url = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
-            //$url = $url.'cover';
-           // Image::make(Input::file('cover'))->resize(300, 200)->save('cover.jpg');
-            //$path = $request->file('cover')->store('covers');
-            //$coverfilename = $file->getClientOriginalName();
-            //Storage::disk('local')->put($coverfilename);
-            //$file = $request->file('cover');
-            //$file->move('../images', $coverfilename);//папка для загрузки изображения
-            //$track->cover = $url;
-            $track->save();
-            //$track->user_id = 2;
-            /*Storage::put(
-                'covers/'.'1',
-                file_get_contents($request->file('cover')->getRealPath())
-              );*/
             
             return back();
 	}
@@ -110,9 +90,13 @@ class TrackController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Track $track, $id)
 	{
-		//
+            $track=Track::find($id);
+            if ($track->user_id = Auth::user()->id)
+            {
+                return view('pages.profile.profile_edit_track',['track'=>$track]);
+            }
 	}
 
 	/**
@@ -121,9 +105,39 @@ class TrackController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, Track $track, $id)
 	{
-		//
+                $track = Track::find($id);
+                $trackname_old = $track -> name.'.mp3';
+                $coverfilename_old = $track -> name.'.jpg';
+                if ($track->user_id = Auth::user()->id)
+                {
+                    $input = Input::except(['_method', '_token']);
+                    $track -> update($input);
+                    $trackname = $request['name'].'.mp3';
+                    $coverfilename = $request['name'].'.jpg';
+                    $cover = $request->file('cover');
+                    $trackfile = $request->file('track');
+                        if ($cover) {
+                            Storage::disk('local')->put('covers/'.$coverfilename, File::get($cover));
+                        }
+                        else {
+                            Storage::move('covers/'.$coverfilename_old, 'covers/'.$coverfilename);
+                        }
+                        if ($trackfile) {
+                            Storage::disk('local')->put('tracks/'.$trackname, File::get($trackfile));
+                        }
+                        else {
+                            Storage::move('tracks/'.$trackname_old, 'tracks/'.$trackname);
+                        }
+                    
+                    
+                    $track->save();
+                    return back();
+                }
+                else {
+                    return back();
+                }
 	}
 
 	/**
@@ -139,6 +153,10 @@ class TrackController extends Controller {
             {
                 $track = Track::find($id);
                 $track -> delete();
+                $trackname = $track -> name;
+                Storage::disk('local')->delete('tracks/'.$trackname.'.mp3');
+                $coverfilename = $track -> name;
+                Storage::disk('local')->delete('covers/'.$coverfilename.'.jpg');
                 return back();
             }
             else {
