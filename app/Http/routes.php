@@ -19,6 +19,16 @@ Route::get('/profile/main/{user}', [
     'uses' => 'ProfileController@index'
 ]);
 
+Route::get('/profile/settings/{user}', [
+    'middleware' => 'auth',
+    'uses' => 'UserInfoController@index'
+]);
+
+Route::post('/profile/settings/{user}', [
+    'middleware' => 'auth',
+    'uses' => 'UserInfoController@update'
+]);
+
 Route::get('/coverimage/{coverfilename}', [
     'uses' => 'MainController@getCover',
     'as' => 'cover.image',

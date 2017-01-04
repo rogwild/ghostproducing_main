@@ -24,7 +24,7 @@ class CreateTracksTable extends Migration {
                         $table->string('sequencer');
                         $table->string('key');
                         $table->string('cover');
-                        $table->varchar('coverfilename');
+                        $table->string('coverfilename');
                         $table->string('trackfile');
                         $table->string('megalink');
 			$table->timestamps();

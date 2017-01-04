@@ -47,12 +47,12 @@ class TrackController extends Controller {
                 $cover = $request->file('cover');
                 $coverfilename = $request['name'].'.jpg';
                     if ($cover) {
-                        Storage::disk('local')->put('covers/'.$coverfilename, File::get($cover));
+                        Storage::disk('local')->put($coverfilename, File::get($cover));
                     }
                     $trackfile = $request->file('track');
                     $trackname = $request['name'].'.mp3';
                     if ($trackfile) {
-                        Storage::disk('local')->put('tracks/'.$trackname, File::get($trackfile));
+                        Storage::disk('local')->put($trackname, File::get($trackfile));
                     }
                 $track->save();
             }
@@ -119,16 +119,16 @@ class TrackController extends Controller {
                     $cover = $request->file('cover');
                     $trackfile = $request->file('track');
                         if ($cover) {
-                            Storage::disk('local')->put('covers/'.$coverfilename, File::get($cover));
+                            Storage::disk('local')->put($coverfilename, File::get($cover));
                         }
                         else {
-                            Storage::move('covers/'.$coverfilename_old, 'covers/'.$coverfilename);
+                            Storage::move($coverfilename_old, $coverfilename);
                         }
                         if ($trackfile) {
-                            Storage::disk('local')->put('tracks/'.$trackname, File::get($trackfile));
+                            Storage::disk('local')->put($trackname, File::get($trackfile));
                         }
                         else {
-                            Storage::move('tracks/'.$trackname_old, 'tracks/'.$trackname);
+                            Storage::move($trackname_old, $trackname);
                         }
                     
                     
@@ -154,9 +154,9 @@ class TrackController extends Controller {
                 $track = Track::find($id);
                 $track -> delete();
                 $trackname = $track -> name;
-                Storage::disk('local')->delete('tracks/'.$trackname.'.mp3');
+                Storage::disk('local')->delete($trackname.'.mp3');
                 $coverfilename = $track -> name;
-                Storage::disk('local')->delete('covers/'.$coverfilename.'.jpg');
+                Storage::disk('local')->delete($coverfilename.'.jpg');
                 return back();
             }
             else {

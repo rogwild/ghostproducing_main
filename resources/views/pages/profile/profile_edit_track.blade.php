@@ -16,7 +16,7 @@
                           <li role="presentation"><a href="profile_orders.html">заказы<span class="badge">2</span></a></li>
                           <li role="presentation"><a href="profile_messages.html">сообщения</a></li>
                           <li role="presentation" class="active"><a href="{{ url('/profile/add_track/{id}') }}">добавить</a></li>
-                          <li role="presentation"><a href="profile_settings.html">настройки</a></li>
+                          <li role="presentation"><a href="{{ url('/profile/settings/{user}') }}">настройки</a></li>
                         </ul>
                     </div>
                  </div>

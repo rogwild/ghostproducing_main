@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/OpenServer/domains/ghostproducing_main/resources/views/pages/profile/layout.blade.php</file>
-            <file>file:/C:/OpenServer/domains/ghostproducing_main/app/Http/Controllers/MainController.php</file>
+            <file>file:/C:/OpenServer/domains/ghostproducing_main/resources/views/pages/profile/profile_settings.blade.php</file>
             <file>file:/C:/OpenServer/domains/ghostproducing_main/app/Http/routes.php</file>
             <file>file:/C:/OpenServer/domains/ghostproducing_main/app/Http/Controllers/ProfileController.php</file>
-            <file>file:/C:/OpenServer/domains/ghostproducing_main/resources/views/pages/profile/profile_add_track.blade.php</file>
-            <file>file:/C:/OpenServer/domains/ghostproducing_main/resources/views/layout.blade.php</file>
-            <file>file:/C:/OpenServer/domains/ghostproducing_main/resources/views/pages/profile/profile_main.blade.php</file>
-            <file>file:/C:/OpenServer/domains/ghostproducing_main/resources/views/pages/profile/profile_edit_track.blade.php</file>
-            <file>file:/C:/OpenServer/domains/ghostproducing_main/resources/views/pages/main.blade.php</file>
-            <file>file:/C:/OpenServer/domains/ghostproducing_main/resources/views/auth/login.blade.php</file>
+            <file>file:/C:/OpenServer/domains/ghostproducing_main/app/Http/Controllers/UserInfoController.php</file>
             <file>file:/C:/OpenServer/domains/ghostproducing_main/app/Http/Controllers/TrackController.php</file>
         </group>
     </open-files>

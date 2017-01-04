@@ -136,6 +136,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
                 'Intervention\Image\ImageServiceProvider',
+                'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -194,7 +195,9 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
                 'Image'     => 'Intervention\Image\Facades\Image',
-                'Carbon'     => 'Carbon\Carbon'
+                'Carbon'     => 'Carbon\Carbon',
+                'Form'      => 'Illuminate\Html\FormFacade',
+                'Html'      => 'Illuminate\Html\HtmlFacade'
 
 	],
 

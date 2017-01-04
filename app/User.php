@@ -35,12 +35,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return $this->hasMany(Order::class);
         }
         
+        public function UserInfo() {
+            return $this->hasOne(UserInfo::class);
+        }
+        
         public function tracks() {
             return $this->hasMany(Track::class);
         }
         
-        /*public function addTrack(Track $track) {
-            return $this->tracks()->save($track);
-        }*/
+        public function getFillable() {
+            return $this->fillable;
+          }
 
 }
